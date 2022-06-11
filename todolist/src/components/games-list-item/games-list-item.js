@@ -1,10 +1,18 @@
 import './games-list-item.css';
 
-const GamesListItem = () => {
+const GamesListItem = ({title, rate, increase}) => {
+    let classType;
+    if(increase){
+        classType = "list-group-item d-flex justify-content-between increase"
+    }
+    else{
+        classType = "list-group-item d-flex justify-content-between"
+    }
+
     return (
-        <li className="list-group-item d-flex justify-content-between">
-            <span className="list-group-item-label">John Smith</span>
-            <input type="text" className="list-group-item-input" defaultValue="1000$"/>
+        <li className={classType}>
+            <span className="list-group-item-label">{title}</span>
+            <input type="text" className="list-group-item-input" defaultValue={rate + " points"}/>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                     className="btn-cookie btn-sm ">

@@ -2,12 +2,19 @@ import GamesListItem from "../games-list-item/games-list-item";
 
 import './games-list.css';
 
-const GamesList = () => {
+const GamesList = ({data}) => {
+
+    const elements = data.map(item => {
+        const {id, ...itemProps} = item;
+        return(
+            //<GamesListItem title = {item.title} rate = {item.rate}/>
+            <GamesListItem key={id}{...itemProps}/>
+        )
+    });
+
     return (
         <ul className="app-list list-group">
-            <GamesListItem/>
-            <GamesListItem/>
-            <GamesListItem/>
+            {elements}
         </ul>
     )
 }
